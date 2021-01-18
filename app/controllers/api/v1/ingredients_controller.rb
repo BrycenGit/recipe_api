@@ -18,12 +18,12 @@ class Api::V1::IngredientsController < ApplicationController
 
   def create
     recipe = Recipe.find(params[:recipe_id])
-    ingredient = recipe.ingredients.new(ingredient_params)
-    if ingredient.save
+    ingredient = recipe.ingredients.create!(ingredient_params)
+    # if ingredient.save
       render json: { status: 'SUCCESS', message: 'loaded the ingredient', data: ingredient }
-    else
-      render json: { status: 'ERROR', message: 'ingredient not saved', data: ingredient.errors }
-    end
+    # else
+      # render json: { status: 'ERROR', message: 'ingredient not saved', data: ingredient.errors }
+    # end
   end
 
   def destroy
