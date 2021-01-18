@@ -11,6 +11,9 @@ class Api::V1::RecipesController < ApplicationController
   end
 
   def create
+    if params[:name]
+      puts(params[:name])
+    end
     recipe = Recipe.new(recipe_params)
     if recipe.save
       render json: { status: 'SUCCESS', message: 'loaded the recipe', data: recipe }
@@ -37,6 +40,6 @@ class Api::V1::RecipesController < ApplicationController
   private
 
       def recipe_params
-        params.require(:recipe).permit(:name, :procedure)
+        params.permit(:name, :procedure)
       end
 end
