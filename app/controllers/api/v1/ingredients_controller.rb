@@ -7,7 +7,7 @@ class Api::V1::IngredientsController < ApplicationController
     else
       ingredients = Ingredient.order(created_at: :desc)
     end
-    render json: { status: 'SUCCESS', message: 'loaded ingredients', data: ingredients }
+    render json: ingredients
   end
 
   def show
