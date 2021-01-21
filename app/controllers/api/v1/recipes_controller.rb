@@ -4,6 +4,7 @@ class Api::V1::RecipesController < ApplicationController
     recipes = Recipe.order(created_at: :desc)
     
     render json: recipes
+
     
   end
 
